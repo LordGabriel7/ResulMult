@@ -22,14 +22,19 @@ public class PraticaMultiplicacao {
         numeroAleatorio = random.nextInt((max - min) + 1) + min;
         do {
             System.out.printf(String.format("%d x %d:", numeros.tabuada, numeroAleatorio));
+            long inicio = System.currentTimeMillis();
             resposta = scanner.nextInt();
+
             scanner.nextLine();
             if (resposta != numeros.tabuada * numeroAleatorio) {
                 System.out.println("Você errou! tente novamente!");
             } else {
-                System.out.println("Parabens, você acertou!!! quer continuar?[S|N]");
+                long fim = System.currentTimeMillis();
+                long tempoGasto = (fim - inicio) / 1000;
+                System.out.println(String.format("Parabens, você acertou!!!\nTempo total: %d Segundos\nQuer " +
+                        "continuar?[S|N]",tempoGasto));
                 numeroAleatorio = random.nextInt((max - min) + 1) + min;
-                sN = scanner.nextLine();
+                sN = scanner.nextLine().trim();
             }
         } while (!sN.equalsIgnoreCase("n") || !sN.equalsIgnoreCase("N"));
     }
